@@ -96,10 +96,10 @@ const SignUp = () => {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        {/* <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5">
           {isSignup ? "Sign up" : "Sign in"}
-        </Typography> */}
-        {/* <form className={classes.form} onSubmit={handleSubmit}>
+        </Typography>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             {isSignup && (
               <>
@@ -148,8 +148,8 @@ const SignUp = () => {
             className={classes.submit}
           >
             {isSignup ? "Sign Up" : "Sign In"}
-          </Button> */}
-        {/* <GoogleLogin
+          </Button>
+          {/* <GoogleLogin
             clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button
@@ -168,14 +168,14 @@ const SignUp = () => {
             onFailure={googleError}
             cookiePolicy="single_host_origin"
           /> */}
-        <GoogleLogin
-          onSuccess={googleSuccess}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-        />
+          <GoogleLogin
+            onSuccess={googleSuccess}
+            onError={() => {
+              console.log("Login Failed");
+            }}
+          />
 
-        {/* <Grid container justify="flex-end">
+          <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
                 {isSignup
@@ -184,7 +184,7 @@ const SignUp = () => {
               </Button>
             </Grid>
           </Grid>
-        </form> */}
+        </form>
       </Paper>
     </Container>
   );

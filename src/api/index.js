@@ -1,6 +1,9 @@
 import axios from "axios";
 
 const API = axios.create({
+  // local
+  // baseURL: "/",
+  // deploy
   baseURL: "https://memories-mern-back.onrender.com",
 });
 
