@@ -24,7 +24,7 @@ const Post = ({ post, setCurrentId }) => {
   console.log("creator", post.creator);
 
   const Likes = () => {
-    if (post.likes.length > 0) {
+    if (post.likes?.length > 0) {
       return post.likes.find(
         (like) =>
           like ===
