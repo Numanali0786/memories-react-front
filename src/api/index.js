@@ -2,9 +2,9 @@ import axios from "axios";
 
 const API = axios.create({
   // local
-  baseURL: "/",
+  // baseURL: "/",
   // deploy
-  // baseURL: "https://memories-mern-back.onrender.com",
+  baseURL: "https://memories-mern-back.onrender.com",
 });
 
 API.interceptors.request.use((req) => {
