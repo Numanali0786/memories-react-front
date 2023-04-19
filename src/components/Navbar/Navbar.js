@@ -4,7 +4,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
 
-import memories from "../../images/memories.png";
+import memories from "../../images/logo.png";
 import * as actionType from "../../constants/actionTypes";
 import useStyles from "./styles";
 
@@ -52,7 +52,10 @@ const Navbar = () => {
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
           <div className={classes.profile}>
-            {/* <Avatar className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar> */}
+            <div className={classes.email}>
+              {user?.result?.decodedJwt.email}
+            </div>
+
             <Avatar
               className={classes.purple}
               alt={user?.result.decodedJwt.name}

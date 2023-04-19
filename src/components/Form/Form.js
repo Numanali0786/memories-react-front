@@ -33,13 +33,21 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId === 0) {
-      dispatch(createPost({ ...postData, name: user?.result?.name }));
+      console.log("dd", postData);
+      dispatch(
+        createPost({
+          ...postData,
+          name: user?.result?.decodedJwt.name,
+          creator: user?.result?.decodedJwt.sub,
+        })
+      );
       clear();
     } else {
       dispatch(
         updatePost(currentId, {
           ...postData,
           name: user?.result?.decodedJwt.name,
+          creator: user?.result?.decodedJwt.sub,
         })
       );
       clear();

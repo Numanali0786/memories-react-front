@@ -9,9 +9,6 @@ import {
   Container,
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-// old google login
-// import { GoogleLogin } from 'react-google-login';
-// new google login
 import { GoogleLogin } from "@react-oauth/google";
 import jwtDecode from "jwt-decode";
 
@@ -57,24 +54,12 @@ const SignUp = () => {
     }
   };
 
-  // const googleSuccess = async (res) => {
-  //   const result = res?.profileObj;
-  //   const token = res?.tokenId;
-
-  //   try {
-  //     dispatch({ type: AUTH, data: { result, token } });
-
-  //     history.push('/');
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
   const googleSuccess = async (res) => {
     // console.log(res);
     const decodedJwt = jwtDecode(res.credential);
     const token = res?.credential;
     const result = { token, decodedJwt };
-    console.log(result);
+    console.log("dfvb", result.decodedJwt._id);
 
     try {
       dispatch({ type: AUTH, data: { result, token } });
@@ -84,8 +69,6 @@ const SignUp = () => {
       console.log(error);
     }
   };
-
-  // const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -149,25 +132,6 @@ const SignUp = () => {
           >
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
-          {/* <GoogleLogin
-            clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
-            render={(renderProps) => (
-              <Button
-                className={classes.googleButton}
-                color="primary"
-                fullWidth
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-                startIcon={<Icon />}
-                variant="contained"
-              >
-                Google Sign In
-              </Button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleError}
-            cookiePolicy="single_host_origin"
-          /> */}
           <GoogleLogin
             onSuccess={googleSuccess}
             onError={() => {

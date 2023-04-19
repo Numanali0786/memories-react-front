@@ -21,7 +21,7 @@ const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
-  console.log(post.creator);
+  console.log("creator", post.creator);
 
   const Likes = () => {
     if (post.likes.length > 0) {
@@ -70,7 +70,7 @@ const Post = ({ post, setCurrentId }) => {
         </Typography>
       </div>
       {(user?.result?.decodedJwt.googleId === post?.creator ||
-        user?.result?.decodedJwt._id === post?.creator) && (
+        user?.result?.decodedJwt.sub === post?.creator) && (
         <div className={classes.overlay2}>
           <Button
             onClick={() => setCurrentId(post._id)}
@@ -109,7 +109,7 @@ const Post = ({ post, setCurrentId }) => {
           <Likes />
         </Button>
         {(user?.result?.decodedJwt.given_name === post?.creator ||
-          user?.result?.decodedJwt._id === post?.creator) && (
+          user?.result?.decodedJwt.sub === post?.creator) && (
           <Button
             size="small"
             color="secondary"
